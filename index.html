@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat untuk Mutia❤️</title>
+    <style>
+        body {
+            background-color: #ffe4e1;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+        #surat {
+            font-size: 20px;
+            white-space: pre-wrap;
+            width: 80%;
+            margin: auto;
+            border: 2px solid pink;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: pink;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .love {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10px) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        }
+        /* Watermark */
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            font-size: 16px;
+            color: rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            pointer-events: none;
+            user-select: none;
+        }
+        /* Tombol emoji */
+        .emoji-btn {
+            position: fixed;
+            bottom: 50px;
+            right: 100px;
+            background-color: pink;
+            color: white;
+            font-size: 20px;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        /* Animasi saat dipencet */
+        .emoji-btn:active {
+            transform: scale(1.2) rotate(10deg);
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hai Mutia ❤️</h1>
+    <button onclick="mulaiSurat()">Buka Surat</button>
+
+    <p id="surat" class="hidden"></p>
+
+    <audio id="musik" loop>
+        <source src="Sampaiakhir.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Watermark -->
+    <div class="watermark">Adhmrn >> HAR</div>
+
+    <!-- Tombol emoji -->
+    <button class="emoji-btn" onclick="tampilEmote()">😆</button>
+
+    <script>
+        const suratText = "Hai Mutia,\nGW cuma mau bilang kalau LU itu keren.\nWalau kita baru kenal, gw harap bukan hanya perkenalan singkat, gw mau kita bisa kenal lebih lama.\nGw senang bisa kenal lu mutia, dan lu bilang ke gw kalo lu gatau yang beneran atau suka sama orang karna lu terlalu suka becanda.\nGw yaa gaa becanda, dari hal yang kecil lu nanya kondisi gw disaat gw apus pp aja gw udah seneng mutia, lu memperhatikan dari hal kecil, gw cuman bisa bilang terima kasih ke lu.\nMau kah lu nemenin gw berproses Mutia? Lu jadi support system gw?, dan gw pun jadi support system lu Mutia.\nYaa gw tau kita belum pernah ketemu dan gw yakin suatu hari nanti kita bertemu. Gw harap kita tidak asing yaa\n\nI Love You 💖";
+        let suratElem = document.getElementById("surat");
+        let musik = document.getElementById("musik");
+
+        function mulaiSurat() {
+            document.querySelector("button").style.display = "none";
+            suratElem.classList.remove("hidden");
+            suratElem.style.opacity = "1";
+            suratElem.style.transform = "scale(1)";
+            ketikSurat(suratText, suratElem);
+            musik.play();
+            buatLove();
+        }
+
+        function ketikSurat(text, elem, i = 0) {
+            if (i < text.length) {
+                elem.innerHTML += text.charAt(i);
+                setTimeout(() => ketikSurat(text, elem, i + 1), 100);
+            }
+        }
+
+        function buatLove() {
+            setInterval(() => {
+                let love = document.createElement("div");
+                love.className = "love";
+                love.innerHTML = "❤️";
+                love.style.left = Math.random() * window.innerWidth + "px";
+                love.style.top = "-30px";
+                love.style.animationDuration = (Math.random() * 2 + 3) + "s";
+                love.style.fontSize = Math.random() * 20 + 20 + "px";
+                document.body.appendChild(love);
+
+                setTimeout(() => love.remove(), 5000);
+            }, 300);
+        }
+
+        function tampilEmote() {
+            let emote = document.createElement("div");
+            emote.innerHTML = "HI MUTIA 😁💖";
+            emote.style.position = "absolute";
+            emote.style.bottom = "110px";
+            emote.style.right = "110px";
+            emote.style.fontSize = "25px";
+            emote.style.opacity = "1";
+            emote.style.transition = "opacity 1s ease-in-out";
+            document.body.appendChild(emote);
+
+            setTimeout(() => {
+                emote.style.opacity = "0";
+                setTimeout(() => emote.remove(), 1000);
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
