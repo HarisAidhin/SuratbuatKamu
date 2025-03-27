@@ -1,2 +1,2 @@
-Buat yang pastia aja
+Buat yang pasti aja
 
